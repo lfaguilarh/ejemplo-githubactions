@@ -1,5 +1,0 @@
-Flask
-PyMySQL
-Flask-SQLAlchemy
-flask-bcrypt
-flask_myqldb
