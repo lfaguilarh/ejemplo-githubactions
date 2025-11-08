@@ -1,0 +1,58 @@
+{% extends './base.html' %} {% block title %} Registro {% endblock %} 
+{% block customCss %} 
+<link rel="stylesheet" href="{{url_for('static', filename="css/login.css")}}">
+{% endblock%}
+{% block body %}
+
+<div class="flex items-center justify-center ">
+
+<div class="w-1/2 mt-20 bg-gray-200 rounded-lg shadow-lg p-5 max-w-3xl">
+  <h2 class="font-bold text-4xl text-gray-700">Registro</h2>
+<p class="text-md mt-4 text-gray-500"> Por favor inicie su registro </p>
+  <form actions="/registro" method="POST" class="flex flex-col gap-4 pl-10 pr-40">
+        <input
+        type="text"
+        name="usuario"
+        class="bg-slate-50 placeholder-gray-400 placeholder-opacity-75 px-4 mt-8 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Nombre de usuario"
+      />
+              <input
+        type="correo"
+        name="correo"
+        class="bg-slate-50 placeholder-gray-400 placeholder-opacity-75 px-4 mt-8 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="name@example.com"
+      />
+        <input
+        type="password"
+        name="contrasena"
+        class="bg-slate-50 placeholder-gray-400 placeholder-opacity-75 px-4 mt-8 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="contraseña"
+      />
+      {% if error %}
+<div class="bg-red-50 border border-red-300 text-red-600 px-4 py-3 rounded relative" role="alert">
+  <span class="block sm:inline text-sm"> {{error}} </span>
+  <span class="absolute top-0 bottom-0 right-0 px-0 py-1">
+    <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+  </span>
+</div>
+{% endif %}
+
+  {% for mns in get_flashed_messages() %}
+<div class="bg-green-50 border border-lime-300 text-green-600 px-4 py-3 rounded relative" role="alert">
+  <span class="block sm:inline text-sm">  {{mns}} </span>
+  <span class="absolute top-0 bottom-0 right-0 px-0 py-1">
+    <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+  </span>
+</div>
+{% endfor %}
+      <div class="flex flex-row">
+        <button class="bg-black w-30 mt-10 rounded-xl text-white py-2 hover:scale-105 duration-300" type="submit">Registro</button>
+        <a href="{{ url_for('login.index') }}"><button class="bg-[#FFFFFF] text-[#002D74] ml-5 w-30 mt-10 rounded-xl py-2 hover:scale-105 duration-300" type="button">Login</button></a>
+      </div>
+
+  </form>
+</div>
+<div>
+
+{% endblock %}
+
